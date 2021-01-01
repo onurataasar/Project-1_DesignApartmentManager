@@ -58,11 +58,11 @@ nav {
   list-style: none;
 }
 
-.nav-link {
+.nav-links {
   color: hsl(0, 0%, 100%);
-  font-size: 28px;
+  font-size: 20px;
   text-decoration: none;
-  background-color: rgb(13, 23, 65);
+  background-color: rgb(147, 14, 14);
 }
 
 .cart {
@@ -77,6 +77,13 @@ nav {
 .sm {
   width: 10%;
   margin: 15px;
+}
+
+.logoutLblPos{
+
+  position:fixed;
+  right:10px;
+  top:5px;
 }
 
 .display-3 {
@@ -157,6 +164,8 @@ nav {
   -webkit-animation: fadeEffect 1s;
   animation: fadeEffect 1s;
 }
+
+
 
 /* Fade in tabs */
 @-webkit-keyframes fadeEffect {
