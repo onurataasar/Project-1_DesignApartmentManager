@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="./css/register.css" />
+<link rel="stylesheet" href="./css/registe.css" />
 <?php 
 include "check.php";
 
@@ -8,6 +8,7 @@ include "check.php";
           $name = $_POST['name'];
           $pass = $_POST['psw'];
           $email = $_POST['email'];
+          $block = $_POST['block'];
           
           if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                   header("Location:register.php?error=Invalid E-Mail adress.");
@@ -15,7 +16,7 @@ include "check.php";
 
               else {
 
-          $sql = "INSERT INTO users (username, name, psw, email) VALUES ('$uname', '$name','$pass','$email')";
+          $sql = "INSERT INTO users (username, name, psw, email, block) VALUES ('$uname', '$name','$pass','$email', '$block')";
 
 
             if ($conn->query($sql) === TRUE) {
@@ -53,6 +54,14 @@ include "check.php";
             <tr>
               <td>E-Mail:</td>
               <td><input type="text" name="email"  value="" placeholder="example@mail.com" size="20" required><p style="color:red;display:inline;">*</p></td>
+            </tr>
+            <tr>
+              <td>Block:</td>
+             <td> <select id="block" name="block" size="1"  >
+          <option value="A Block">A Block</option>
+          <option value="B Block">B Block</option>
+          <option value="C Block">C Block</option>
+       </select> </td> 
             </tr>
 
           </table> <br>
