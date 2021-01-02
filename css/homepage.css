@@ -1,0 +1,190 @@
+body {
+    margin-left: 0%;
+    font-family: 'Verdana', sans-serif;
+    background-color: #d5dbab !important;
+  }
+  
+  
+  @-webkit-keyframes fadein {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Header and nav-bar styling , until .navbar */
+  header {
+    display: flex;
+    width: 90%;
+    height: 10vh;
+    margin: auto;
+    align-items: center;
+    color: #0b2e44;
+    font-family: 'Verdana', sans-serif;
+  }
+  
+  .logo-container,
+  
+  .nav-links,
+  
+  
+  .cart {
+    display: flex;
+  }
+  
+  .logo-container {
+    flex: 1;
+  }
+  
+  .logo {
+    font-weight: 400;
+    margin-top: 7%;
+    margin-left: 10%;
+  }
+  
+  #logo {
+    width: 25%;
+    border-radius: 50%;
+  }
+  
+  nav {
+    flex: 2;
+  }
+  
+  .nav-links {
+    justify-content: space-around;
+    list-style: none;
+  }
+  
+  .nav-links {
+    color: hsl(0, 0%, 100%);
+    font-size: 20px;
+    text-decoration: none;
+    background-color: rgb(147, 14, 14);
+  }
+  
+  .cart {
+    flex: 1;
+    justify-content: flex-end;
+  }
+  
+  .navbar {
+    margin-right: 20%;
+  }
+  
+  .sm {
+    width: 10%;
+    margin: 15px;
+  }
+  
+  .logoutLblPos{
+  
+    position:fixed;
+    right:10px;
+    top:5px;
+  }
+  
+  .display-3 {
+    margin-left: 10%;
+  }
+  
+  .display-5 {
+    text-align: center;
+  }
+  
+  #main-img {
+    width: 70%;
+    margin-left: 10%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .heading {
+    color: #180c52;
+  }
+  
+  #submit {
+    margin-left: 1%;
+  }
+  
+  /* slider */
+  .carousel {
+    margin-top: 50px;
+  }
+  
+  .carousel-inner {
+    height: 300px;
+  }
+  
+  .carousel-caption {
+    color: rgb(145, 14, 14);
+    top: 50%;
+  }
+  
+  .carousel-control-next-icon,
+  .carousel-control-prev-icon {
+    filter: invert(100%);
+  }
+  
+  
+  /* Style the tab */
+  .tab {
+    overflow: hidden;
+    background-color: rgb(219, 131, 131);
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #c52e10;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #bc140e;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+  }
+  
+  
+  
+  /* Fade in tabs */
+  @-webkit-keyframes fadeEffect {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeEffect {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
