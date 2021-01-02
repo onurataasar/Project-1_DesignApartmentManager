@@ -1,21 +1,20 @@
 <html> <title> ADMIN PAGE </title>
-<link rel="stylesheet" href="./css/admin.css" />
+<link type="text/css" rel="stylesheet" href="./css/admin1.css" />
 <body>
   <div class = "welcome">
 <h1> Welcome to Asar Residentials
   <br> Admin Panel  <h1>
 </div>
-<div class = "logout">
-<a href="homepage.php">Log Out</a>
-</div>
+
 <?php 
 include "check.php";
 
-        if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['name']) && !empty($_POST['psw']) && !empty($_POST['email'])) {
+        if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['name']) && !empty($_POST['psw']) && !empty($_POST['email']) && !empty($_POST['block'])) {
           $uname = $_POST['username'];
           $name = $_POST['name'];
           $pass = $_POST['psw'];
           $email = $_POST['email'];
+          $block = $_POST['block'];
           
           if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                   header("Location:admin.php?error=Invalid E-Mail adress.");
@@ -23,7 +22,7 @@ include "check.php";
 
               else {
 
-          $sql = "INSERT INTO users (username, name, psw, email) VALUES ('$uname', '$name',MD5('$pass'),'$email')";
+          $sql = "INSERT INTO users (username, name, psw, email, block) VALUES ('$uname', '$name',MD5('$pass'),'$email', '$block')";
           
 
 
@@ -72,7 +71,14 @@ include "check.php";
               <td><input type="text" name="email"  value="" placeholder="example@mail.com" size="50" required><p style="color:red;display:inline;"></p></td>
             </tr>
       </div>
-
+      <tr>
+      <td>Block(*):</td>
+             <td> <select id="block" name="block" size="1"  >
+          <option value="A Block">A Block</option>
+          <option value="B Block">B Block</option>
+          <option value="C Block">C Block</option>
+       </select> </td> 
+      </tr>
           </table> <br>
           <?php if (isset($_GET['error'])) { ?>
               <p class="error"><?php echo $_GET['error']; ?></p>
