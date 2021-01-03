@@ -1,5 +1,5 @@
 <html> <title> ADMIN PAGE </title>
-<link type="text/css" rel="stylesheet" href="./css/admin1.css" />
+<link type="text/css" rel="stylesheet" href="./css/admin.css" />
 <body>
   <div class = "welcome">
 <h1> Welcome to Asar Residentials
@@ -94,32 +94,47 @@ include "check.php";
 <div class="userlist">
 <p> <h2> List of the users </h2> </p>
 
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "users";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+<?php 
+                    include "check.php"; 
 
-$sql = "SELECT userID, name, username, email FROM users";
-$result = $conn->query($sql);
+                    $sql = "SELECT * FROM `users`";
+                    $result = $conn->query($sql) or die ("Failed to excecute the query $sql on $connection");
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "ID: " . $row["userID"]. "<br>". "  Name: " . $row["name"]. " " ."<br>" . "Username: " . $row["username"]. " " . "<br>".  "  Email: " . $row["email"]. " " ."<br>". "<br>";
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-?>
+
+                    echo "<table id='users' class='table table-bordered'>
+                          <tr>
+                          <th>User ID</th>
+                          <th>Username</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Block</th> 
+                          <th>Delete User</th>
+                          </tr>";
+
+                          while($row =  $result->fetch_assoc())
+                          {
+                        $userID = $row['userID'];
+                        $uname = $row['username'];
+                        $name = $row['name'];
+                        $email = $row['email'];
+                        $block = $row['block'];
+                        // code to display information
+
+
+               { echo "<tr>
+                        <td>$userID</td>
+                        <td>$uname</td>
+                        <td>$name</td>
+                        <td>$email</td>
+                        <td>$block</td>
+                        <td><a href='delete_user.php?userID=".$userID."'>Delete</a></td>
+                        </tr>";}
+                }
+                ?> 
+
+
+
 
 </div>
 </div>
