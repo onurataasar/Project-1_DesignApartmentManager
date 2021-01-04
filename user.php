@@ -1,3 +1,13 @@
+<!-- Logout button -->
+<?php
+if (isset($_GET['logout'])) { 
+    session_destroy(); 
+    unset($_SESSION['username']); 
+	header("location: login.php"); 
+}
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -44,9 +54,6 @@
       <li class="nav-item">
         <a class="nav-link" href="contactus.html">Contact</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="homepage.php">Log Out</a>
-      </li>
      
     </ul>
   
@@ -67,7 +74,10 @@
 				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle">
 					<div class="profile-usertitle-name">
-
+					<?php
+					include "logincheck.php";
+					echo $_SESSION['username'];
+					?>
 					</div>
 					<div class="profile-usertitle-job">
 						Resident
@@ -76,32 +86,28 @@
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
 				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
+					<button type="button" class="btn btn-success btn-sm"><a href="payrent.php" style="color:white;">PAY RENT</button>
+					<button type="button" style="color:white;" class="btn btn-danger btn-sm"> <a href="user.php?logout='1'" style="color:white;">Logout</button>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
 					<ul class="nav">
 						<li class="active">
-							<a href="#">
+							<a href="user.php">
 							<i class="glyphicon glyphicon-home"></i>
 							Overview </a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="paymenthistory.php">
 							<i class="glyphicon glyphicon-user"></i>
-							Account Settings </a>
+							Payment History </a>
 						</li>
+		
 						<li>
-							<a href="#" target="_blank">
-							<i class="glyphicon glyphicon-ok"></i>
-							Tasks </a>
-						</li>
-						<li>
-							<a href="#">
+							<a href="expenses.php">
 							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
+							Monthly Expenses </a>
 						</li>
 					</ul>
 				</div>
@@ -115,7 +121,9 @@
 		</div>
 	</div>
 </div>
+
 <center>
+
 <strong>Asar Residentials</a></strong>
 </center>
 <br>
