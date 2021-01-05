@@ -17,7 +17,7 @@ if (isset($_GET['logout'])) {
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <link rel="stylesheet" href="./css/user.css">
+  <link rel="stylesheet" href="userpage.css">
 
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -46,13 +46,7 @@ if (isset($_GET['logout'])) {
         <a class="nav-link" href="homepage.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="residents.html">Residents</a>
-      </li>
-      <li class="nav-item">
       <a class="nav-link" href="https://www.google.com/maps/@36.6728673,30.5570388,16.24z"target="_blank">Navigation</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contactus.html">Contact</a>
       </li>
      
     </ul>
@@ -105,9 +99,9 @@ if (isset($_GET['logout'])) {
 						</li>
 		
 						<li>
-							<a href="#">
+							<a href="expenses.php">
 							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
+							Monthly Expenses </a>
 						</li>
 					</ul>
 				</div>
