@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="./css/registe.css" />
+<link rel="stylesheet" href="registe.css" />
 <?php 
 include "check.php";
 
@@ -15,8 +15,8 @@ include "check.php";
               }
 
               else {
-
-          $sql = "INSERT INTO users (username, name, psw, email, block) VALUES ('$uname', '$name','$pass','$email', '$block')";
+                
+          $sql = "INSERT INTO users (username, name, psw, email, block) VALUES ('$uname', '$name',MD5('$pass'),'$email', '$block')";
 
 
             if ($conn->query($sql) === TRUE) {
@@ -24,7 +24,7 @@ include "check.php";
             } else {
               echo "";
             }
-            header('location:register.php');
+            header('location:login.php');
 
 
         }
