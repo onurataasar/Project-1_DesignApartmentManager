@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <link rel="stylesheet" href="./css/homepage.css">
+  <link rel="stylesheet" href="homepage.css">
   <title>Asar Apartments</title>
 </head>
 <body>
@@ -30,15 +30,8 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <a class="nav-link" href="homepage.php">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="residents.html">Residents</a>
-      </li>
       <li class="nav-item">
       <a class="nav-link" href="https://www.google.com/maps/@36.6728673,30.5570388,16.24z"target="_blank">Navigation</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contactus.html">Contact</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -177,12 +170,12 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="carousel-caption">
-          <h2 class="display-5">Covid-19 Protocols<br><small><br>Due to pandemic reasons, our management will not be able to meet you in person. Please use the Contact Us section in our site.</small></h2>
+          <h2 class="display-5">Covid-19 Protocols<br><small><br>Due to pandemic reasons, our management will not be able to meet you in person. </small></h2>
         </div>
       </div>
       <div class="carousel-item">
         <div class="carousel-caption">
-          <h2 class="display-5">Who are Our Neighbours?<br><small><br>You can see our current residents in the Resident section.</small></h2>
+          <h2 class="display-5">Announcement<br><small><br>Please do not forget to pay your rents of this month!</small></h2>
         </div>
       </div>
     </div>
