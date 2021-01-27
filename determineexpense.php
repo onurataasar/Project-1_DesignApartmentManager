@@ -102,53 +102,77 @@ if (isset($_GET['logout'])) {
 				</div>
 				<div class="col-md-9">
 					<div class="profile-content">
-						<h2>Payments</h2>
+						<h2>Determine Monthly Rate and Expenses</h2>
+                        <div class="panel" style=background-color:rgba(204,233,191);>
+    <?php
+    include "check.php";
 
-        <?php
-        include "check.php";
+    if (isset($_POST['submit']) && !empty($_POST['expense']) && !empty($_POST['expensename']) && !empty($_POST['rate'])) {
+      $expense = $_POST['expense'];
+      $expensename = $_POST['expensename'];
+      $rate = $_POST['rate'];
 
-        $sql = "SELECT * FROM `payment`";
-        
-        $result = $conn->query($sql) or die("Failed to excecute the query $sql on $connection");
-
-
-        echo "<table id='users' class='table table-bordered'>
-                          <tr>
-                          <th>Payment No</th>
-                          <th>Username</th>
-                          <th>Name</th>
-                          <th>Collected</th>
-                          <th>Date</th> 
-                          </tr>";
-
-        while ($row =  $result->fetch_assoc()) {
-            $payno = $row['payno'];
-            $username = $row['username'];
-            $name = $row['name'];
-            $price = $row['price'];
-            $date = $row['date'];
-            $rate = ("/3000");
-            // code to display information
+      $sql = "INSERT INTO adminpanel (expense, expensename, rate) VALUES ('$expense', '$expensename','$rate')";
 
 
-            {
-                echo "<tr>
-                        <td>$payno</td>
-                        <td>$username</td>
-                        <td>$name</td>
-                        <td>$price$rate </td>
-                        <td>$date</td>
-                        </tr>";
-            }
-        }
-        ?>
-            </div>
 
-    </div>
+      if ($conn->query($sql) === TRUE) {
+        echo "";
+      } else {
+        echo "";
+      }
+      header('location:admin.php');
+    }
+
+    ?>
+    <form class="form-signin" role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);
+                                                  ?>" method="post">
+
+      <table>
+
+        <div class="textbox">
+          <tr>
+            <td>Expense Name:</td>
+            <td><input type="text" name="expensename" value="" placeholder="" size="50" required>
+              <p style="color:red;display:inline;"></p>
+            </td>
+          </tr>
+        </div>
+        <div class="textbox">
+          <tr>
+            <td>Expense(*):</td>
+            <td><input type="int" name="expense" value="" placeholder="" size="50" required>
+              <p style="color:red;display:inline;"></p>
+            </td>
+          </tr>
+        </div>
+        <div class="textbox">
+          <tr>
+            <td>Rate(*):</td>
+            <td><input type="int" name="rate" value="" placeholder="" size="50" required>
+              <p style="color:red;display:inline;"></p>
+            </td>
+          </tr>
+        </div>
+      </table> <br>
+      <?php if (isset($_GET['error'])) { ?>
+        <p class="error"><?php echo $_GET['error']; ?></p>
+      <?php } ?>
+
+      <input class="btn" type="submit" class="btn btn-primary" name="submit" value="Send"> <br> <br>
+
+
+    </form>
+  </div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<center>
 
+			<strong>Asar Residentials</a></strong>
+		</center>
+		<br>
+		<br>
 	</header> <br>

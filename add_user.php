@@ -72,7 +72,7 @@ if (isset($_GET['logout'])) {
 						<!-- END SIDEBAR USER TITLE -->
 						<!-- SIDEBAR BUTTONS -->
 						<div class="profile-userbuttons">
-							<button type="button" class="btn btn-success btn-sm"><a href="add_user.php" style="color:white;">ADD RESIDENT</button>
+							<button type="button" class="btn btn-success btn-sm"><a href="admin.php" style="color:white;">ADMIN</button>
 							<button type="button" style="color:white;" class="btn btn-danger btn-sm"> <a href="admin.php?logout='1'" style="color:white;">Logout</button>
 						</div>
 						<!-- END SIDEBAR BUTTONS -->
@@ -93,7 +93,7 @@ if (isset($_GET['logout'])) {
 								<li>
 									<a href="userlist.php">
 										<i class="glyphicon glyphicon-flag"></i>
-										Residents </a>
+										Users </a>
 								</li>
 							</ul>
 						</div>
@@ -102,53 +102,105 @@ if (isset($_GET['logout'])) {
 				</div>
 				<div class="col-md-9">
 					<div class="profile-content">
-						<h2>Payments</h2>
+						<h2>Add Resident</h2>
+						<?php
+						include "check.php";
 
-        <?php
-        include "check.php";
-
-        $sql = "SELECT * FROM `payment`";
-        
-        $result = $conn->query($sql) or die("Failed to excecute the query $sql on $connection");
-
-
-        echo "<table id='users' class='table table-bordered'>
-                          <tr>
-                          <th>Payment No</th>
-                          <th>Username</th>
-                          <th>Name</th>
-                          <th>Collected</th>
-                          <th>Date</th> 
-                          </tr>";
-
-        while ($row =  $result->fetch_assoc()) {
-            $payno = $row['payno'];
-            $username = $row['username'];
-            $name = $row['name'];
-            $price = $row['price'];
-            $date = $row['date'];
-            $rate = ("/3000");
-            // code to display information
+						if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['name']) && !empty($_POST['psw']) && !empty($_POST['email']) && !empty($_POST['block'])) {
+							$uname = $_POST['username'];
+							$name = $_POST['name'];
+							$pass = $_POST['psw'];
+							$email = $_POST['email'];
+							$block = $_POST['block'];
 
 
-            {
-                echo "<tr>
-                        <td>$payno</td>
-                        <td>$username</td>
-                        <td>$name</td>
-                        <td>$price$rate </td>
-                        <td>$date</td>
-                        </tr>";
-            }
-        }
-        ?>
-            </div>
+							if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+								header("Location:admin.php?error=Invalid E-Mail adress.");
+							} else {
 
-    </div>
+								$sql = "INSERT INTO users (username, name, psw, email, block) VALUES ('$uname', '$name',MD5('$pass'),'$email', '$block')";
+
+
+
+								if ($conn->query($sql) === TRUE) {
+									echo "";
+								} else {
+									echo "";
+								}
+								header('location:admin.php');
+							}
+						}
+
+						?>
+
+						<form class="form-signin" role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);
+																		?>" method="post">
+
+							<table>
+
+								<div class="textbox">
+									<tr>
+										<td>Username(*):</td>
+										<td><input type="text" name="username" value="" placeholder="" size="50" required>
+											<p style="color:red;display:inline;"></p>
+										</td>
+									</tr>
+								</div>
+								<div class="textbox">
+									<tr>
+										<td>Name(*):</td>
+										<td><input type="text" name="name" value="" placeholder="" size="50" required>
+											<p style="color:red;display:inline;"></p>
+										</td>
+									</tr>
+								</div>
+								<div class="textbox">
+									<tr>
+										<td>Password(*):</td>
+										<td><input type="password" name="psw" value="" placeholder="" size="50" required>
+											<p style="color:red;display:inline;"></p>
+										</td>
+									</tr>
+								</div>
+								<div class="textbox">
+									<tr>
+										<td>E-Mail(*): </td>
+										<td><input type="text" name="email" value="" placeholder="example@mail.com" size="50" required>
+											<p style="color:red;display:inline;"></p>
+										</td>
+									</tr>
+								</div>
+								<tr>
+									<td>Block(*):</td>
+									<td> <select id="block" name="block" size="1">
+											<option value="A Block">A Block</option>
+											<option value="B Block">B Block</option>
+											<option value="C Block">C Block</option>
+										</select> </td>
+								</tr>
+							</table> <br>
+							<?php if (isset($_GET['error'])) { ?>
+								<p class="error"><?php echo $_GET['error']; ?></p>
+							<?php } ?>
+							<h6>
+								<p style="color:red;">Needs to be filled (*)</p>
+							</h6>
+
+							<input class="btn" type="submit" class="btn btn-primary" name="submit" value="Submit"> <br> <br>
+
+
+						</form>
 					</div>
+
 				</div>
 			</div>
 		</div>
+		</div>
 
+		<center>
 
+			<strong>Asar Residentials</a></strong>
+		</center>
+		<br>
+		<br>
 	</header> <br>
