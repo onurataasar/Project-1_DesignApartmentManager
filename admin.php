@@ -85,6 +85,11 @@ if (isset($_GET['logout'])) {
 										Payment List </a>
 								</li>
 								<li>
+									<a href="determineincome.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Determine Income</a>
+								</li>
+								<li>
 									<a href="determineexpense.php">
 										<i class="glyphicon glyphicon-user"></i>
 										Determine Rate/Expense </a>
@@ -104,8 +109,8 @@ if (isset($_GET['logout'])) {
 					<div class="profile-content" style="background-color:rgba(204,233,191);">
 						<h2>ADMIN PAGE</h2>
 						<h4>
-            <div class="card" style=width:400px>
-							<img class="card-img-top" style="max-width: 50%;" src="https://www.pngitem.com/pimgs/m/195-1951339_payment-computer-icons-money-logo-payment-terms-icon.png" alt="Card image">
+            <div class="card" style=width:200px;background:lightseagreen>
+							<img class="card-img-top" style="max-width: 50%;" src="https://nowskills.co.uk/wp-content/uploads/2018/07/money-PNG-e1532606569895.png" alt="Card image">
 							<div class="card-body">
 								<h4 class="card-title">Total Payments</h4>
 								<p class="card-text">
@@ -130,6 +135,30 @@ if (isset($_GET['logout'])) {
 								</p>
 							</div>
 						</div>
+						<div class="card" style= width:200px;background:lightgreen >
+							<img class="card-img-top" style="max-width: 50%;" src="https://nowskills.co.uk/wp-content/uploads/2018/07/money-PNG-e1532606569895.png" alt="Card image">
+							<div class="card-body" style="background: lightgreen;">
+								<h4 class="card-title">Total Income</h4>
+								<p class="card-text">
+									<?php
+									include "check.php";
+									include "logincheck.php";
+									$sql = "SELECT * FROM `incomes`";
+									$result = $conn->query($sql) or die("Failed to excecute the query $sql on $conn");
+
+									$sum1 = 0;
+									while ($row =  $result->fetch_assoc()) {
+
+										$income = $row['income'];
+
+										if ($income > 0) {
+
+											$sum1 = $sum1 + $income;
+										}
+									}
+									echo $sum1;
+									?></p>
+								</p>
 					</div>
 				</div>
 			</div>
