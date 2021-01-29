@@ -85,6 +85,11 @@ if (isset($_GET['logout'])) {
 										Payment List </a>
 								</li>
 								<li>
+									<a href="determineincome.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Determine Income</a>
+								</li>
+								<li>
 									<a href="determineexpense.php">
 										<i class="glyphicon glyphicon-user"></i>
 										Determine Rate/Expense </a>
@@ -103,67 +108,67 @@ if (isset($_GET['logout'])) {
 				<div class="col-md-9">
 					<div class="profile-content">
 						<h2>Determine Monthly Rate and Expenses</h2>
-                        <div class="panel" style=background-color:rgba(204,233,191);>
-    <?php
-    include "check.php";
+						<br>
+							<?php
+							include "check.php";
 
-    if (isset($_POST['submit']) && !empty($_POST['expense']) && !empty($_POST['expensename']) && !empty($_POST['rate'])) {
-      $expense = $_POST['expense'];
-      $expensename = $_POST['expensename'];
-      $rate = $_POST['rate'];
+							if (isset($_POST['submit']) && !empty($_POST['expense']) && !empty($_POST['expensename']) && !empty($_POST['rate'])) {
+								$expense = $_POST['expense'];
+								$expensename = $_POST['expensename'];
+								$rate = $_POST['rate'];
 
-      $sql = "INSERT INTO adminpanel (expense, expensename, rate) VALUES ('$expense', '$expensename','$rate')";
-
-
-
-      if ($conn->query($sql) === TRUE) {
-        echo "";
-      } else {
-        echo "";
-      }
-      header('location:admin.php');
-    }
-
-    ?>
-    <form class="form-signin" role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);
-                                                  ?>" method="post">
-
-      <table>
-
-        <div class="textbox">
-          <tr>
-            <td>Expense Name:</td>
-            <td><input type="text" name="expensename" value="" placeholder="" size="50" required>
-              <p style="color:red;display:inline;"></p>
-            </td>
-          </tr>
-        </div>
-        <div class="textbox">
-          <tr>
-            <td>Expense(*):</td>
-            <td><input type="int" name="expense" value="" placeholder="" size="50" required>
-              <p style="color:red;display:inline;"></p>
-            </td>
-          </tr>
-        </div>
-        <div class="textbox">
-          <tr>
-            <td>Rate(*):</td>
-            <td><input type="int" name="rate" value="" placeholder="" size="50" required>
-              <p style="color:red;display:inline;"></p>
-            </td>
-          </tr>
-        </div>
-      </table> <br>
-      <?php if (isset($_GET['error'])) { ?>
-        <p class="error"><?php echo $_GET['error']; ?></p>
-      <?php } ?>
-
-      <input class="btn" type="submit" class="btn btn-primary" name="submit" value="Send"> <br> <br>
+								$sql = "INSERT INTO adminpanel (expense, expensename, rate) VALUES ('$expense', '$expensename','$rate')";
 
 
-    </form>
-  </div>
+
+								if ($conn->query($sql) === TRUE) {
+									echo "";
+								} else {
+									echo "";
+								}
+								header('location:admin.php');
+							}
+
+							?>
+							<form class="form-signin" role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);
+																			?>" method="post">
+
+								<table>
+
+									<div class="textbox">
+										<tr>
+											<td>Expense Name(*):</td>
+											<td><input type="text" name="expensename" value="" placeholder="Enter a name for your expense" size="50" required>
+												<p style="color:red;display:inline;"></p>
+											</td>
+										</tr>
+									</div>
+									<div class="textbox">
+										<tr>
+											<td>Expense(*):</td>
+											<td><input type="int" name="expense" value="" placeholder="Amount of your expense" size="50" required>
+												<p style="color:red;display:inline;"></p>
+											</td>
+										</tr>
+									</div>
+									<div class="textbox">
+										<tr>
+											<td>Rate(*):</td>
+											<td><input type="int" name="rate" value="" placeholder="Monthly rate on payments" size="50" required>
+												<p style="color:red;display:inline;"></p>
+											</td>
+										</tr>
+									</div>
+								</table> <br>
+								<?php if (isset($_GET['error'])) { ?>
+									<p class="error"><?php echo $_GET['error']; ?></p>
+								<?php } ?>
+
+								<input class="btn" type="submit" class="btn btn-primary" name="submit" value="Send"> <br> <br>
+
+
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -176,3 +181,4 @@ if (isset($_GET['logout'])) {
 		<br>
 		<br>
 	</header> <br>
+</body>
