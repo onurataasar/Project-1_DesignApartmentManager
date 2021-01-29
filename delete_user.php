@@ -16,7 +16,8 @@ if ($conn->connect_error) {
 $userID = $_GET['userID'];
 
 // sql to delete a record
-$sql = "DELETE FROM users WHERE userID='$userID'";
+$today=date("Y-m-d");
+$sql = "UPDATE users SET status = 0, outdate = DATE(NOW()) WHERE userID='$userID'";
 
 if ($conn->query($sql) === TRUE) {
   echo "Record deleted successfully";
