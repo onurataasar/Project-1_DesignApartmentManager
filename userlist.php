@@ -85,6 +85,11 @@ if (isset($_GET['logout'])) {
                                         Payment List </a>
                                 </li>
                                 <li>
+									<a href="determineincome.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Determine Income</a>
+								</li>
+                                <li>
                                     <a href="determineexpense.php">
                                         <i class="glyphicon glyphicon-user"></i>
                                         Determine Rate/Expense </a>
@@ -102,14 +107,14 @@ if (isset($_GET['logout'])) {
                 </div>
                 <div class="col-md-9">
                     <div class="profile-content">
-                        <h2>The Current Residents</h2>
+                        <h2>The Current Residents     <a href="olduserlist.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Click to see our old residents</a></h2> 
                         <div class="userlist">
 
 
                             <?php
                             include "check.php";
 
-                            $sql = "SELECT * FROM `users`";
+                            $sql = "SELECT * FROM `users` WHERE status = 1";
                             $result = $conn->query($sql) or die("Failed to excecute the query $sql on $connection");
 
 
@@ -120,7 +125,9 @@ if (isset($_GET['logout'])) {
                           <th>Name</th>
                           <th>Email</th>
                           <th>Block</th> 
+                          <th>Entry Date</th>
                           <th>Delete User</th>
+
                           </tr>";
 
                             while ($row =  $result->fetch_assoc()) {
@@ -129,6 +136,8 @@ if (isset($_GET['logout'])) {
                                 $name = $row['name'];
                                 $email = $row['email'];
                                 $block = $row['block'];
+                                $entrydate = $row['entrydate'];
+
                                 // code to display information
 
 
@@ -139,12 +148,19 @@ if (isset($_GET['logout'])) {
                         <td>$name</td>
                         <td>$email</td>
                         <td>$block</td>
+                        <td>$entrydate</td>
                         <td><a href='delete_user.php?userID=" . $userID . "'>Delete</a></td>
                         </tr>";
                                 }
                             }
 
                             ?>
+
+
+
+
+                        </div>
+
 
 
 
