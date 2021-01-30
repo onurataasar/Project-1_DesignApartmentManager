@@ -86,6 +86,11 @@ if (isset($_GET['logout'])) {
 										Overview </a>
 								</li>
 								<li>
+									<a href="annoshow.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Announcements </a>
+								</li>
+								<li>
 									<a href="paymenthistory.php">
 										<i class="glyphicon glyphicon-user"></i>
 										Payment History </a>
@@ -96,6 +101,12 @@ if (isset($_GET['logout'])) {
 										<i class="glyphicon glyphicon-flag"></i>
 										Monthly Expenses </a>
 								</li>
+
+								<li>
+									<a href="contact.php">
+										<i class="glyphicon glyphicon-flag"></i>
+										Contact Us </a>
+								</li>
 							</ul>
 						</div>
 						<!-- END MENU -->
@@ -103,7 +114,8 @@ if (isset($_GET['logout'])) {
 				</div>
 				<div class="col-md-9">
 					<div class="profile-content">
-						<h2>Announcement</h2>
+					<center>
+					<h2>About This month's Rent</h2>
 						<h4>
 							<p> This month's rate has been determined as
 								<?php include "check.php";
@@ -116,7 +128,8 @@ if (isset($_GET['logout'])) {
 								echo $rate;
 								?>.</p>
 							Please pay your rents on time.
-					</div>
+							</center>
+						</div>
 				</div>
 			</div>
 		</div>
