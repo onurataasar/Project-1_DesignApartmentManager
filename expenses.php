@@ -94,6 +94,11 @@ if (isset($_GET['logout'])) {
 										Overview </a>
 								</li>
 								<li>
+									<a href="annoshow.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Announcements </a>
+								</li>
+								<li>
 									<a href="paymenthistory.php">
 										<i class="glyphicon glyphicon-user"></i>
 										Payment History </a>
@@ -104,6 +109,12 @@ if (isset($_GET['logout'])) {
 										<i class="glyphicon glyphicon-flag"></i>
 										Monthly Expenses </a>
 								</li>
+
+								<li>
+									<a href="contact.php">
+										<i class="glyphicon glyphicon-flag"></i>
+										Contact Us </a>
+								</li>
 							</ul>
 						</div>
 						<!-- END MENU -->
@@ -112,7 +123,7 @@ if (isset($_GET['logout'])) {
 				<div class="col-md-9">
 					<div class="profile-content">
 						<div class="card" style="width:300px">
-							<img class="card-img-top" src="https://www.pngitem.com/pimgs/m/195-1951339_payment-computer-icons-money-logo-payment-terms-icon.png" alt="Card image">
+						<img class="card-img-top" style="max-width: 50%;" src="https://nowskills.co.uk/wp-content/uploads/2018/07/money-PNG-e1532606569895.png" alt="Card image">
 							<div class="card-body">
 								<h4 class="card-title">Total Income</h4>
 								<p class="card-text">
@@ -138,7 +149,7 @@ if (isset($_GET['logout'])) {
 							</div>
 						</div>
 						<div class="card" style="width:300px">
-							<img class="card-img-top" src="https://www.pngitem.com/pimgs/m/195-1951339_payment-computer-icons-money-logo-payment-terms-icon.png" alt="Card image">
+						<img class="card-img-top" style="max-width: 50%;" src="https://nowskills.co.uk/wp-content/uploads/2018/07/money-PNG-e1532606569895.png" alt="Card image">
 							<div class="card-body">
 								<h4 class="card-title">Total Outcome</h4>
 								<p class="card-text">
