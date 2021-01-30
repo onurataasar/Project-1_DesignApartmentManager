@@ -85,6 +85,16 @@ if (isset($_GET['logout'])) {
 										Payment List </a>
 								</li>
 								<li>
+									<a href="announcement.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Make Announcement</a>
+								</li>
+								<li>
+									<a href="determineincome.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Determine Income</a>
+								</li>
+								<li>
 									<a href="determineexpense.php">
 										<i class="glyphicon glyphicon-user"></i>
 										Determine Rate/Expense </a>
@@ -95,6 +105,12 @@ if (isset($_GET['logout'])) {
 										<i class="glyphicon glyphicon-flag"></i>
 										Residents </a>
 								</li>
+
+								<li>
+									<a href="message.php">
+										<i class="glyphicon glyphicon-flag"></i>
+										Resident Messages </a>
+								</li>
 							</ul>
 						</div>
 						<!-- END MENU -->
@@ -103,44 +119,64 @@ if (isset($_GET['logout'])) {
 				<div class="col-md-9">
 					<div class="profile-content">
 						<h2>Payments</h2>
+						<form class="input-form"  method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                        <label for="month-list">Select Month: </label><span style="font-size: 11px;"></span>
+						<input type="month" name="month" id="month-list">
+						<br><br>
+						<label for="userID">ID of the Resident</label>
+                                <?php 
+                                $userID = array("Select",1,2,3,4,5,6,7,8,9,10,11,12);
+                                echo "<select name=\"userID\">";
+                                foreach($userID as $value){
+                                    echo "<option> $value </option>";
+                                }
+                                echo "<select>";
+								?>
+						<br><br>
 
-        <?php
+						<input class="btn btn-success" type="submit" name="submit" value="Submit">
+
+						<br><br>
+        <?php 
         include "check.php";
-
-        $sql = "SELECT * FROM `payment`";
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $sql="SELECT payment.payno,payment.username,payment.price,payment.date,
+						users.username,users.name,users.block,users.doorno FROM payment INNER JOIN users ON users.username=payment.username";
         
         $result = $conn->query($sql) or die("Failed to excecute the query $sql on $connection");
 
+		if($_POST["month"]!=""){
+			$month=$_POST["month"];
+			$sql = $sql . " AND payment.date = '$month'";
+		}
+		if($_POST["userID"]!="Select"){
+			$userID=$_POST["userID"];
+			$sql = $sql . " AND users.userID='$userID'";
+		}	
+		$sql=$sql ." ORDER BY date";
+                        $result=$conn->query($sql);
+                        if($result->num_rows>0){
+                            echo "<table class=\"table table-striped table-borderless\">";
+                            echo "<tr> <th>ID</th>
+                                <th>date</th>
+								<th>Charge</th>
+								<th>Username</th>
+                                <th>Name</th> 
+                                <th>House</th>
+                                <th>Paid Date</th></tr>";
+                            while($row = $result->fetch_assoc()){
+                                $date1 = $row['date'];     
+                                $date= date('M-Y', strtotime($date1));
+                                echo "<tr><td>".$row['payno']."</td><td>". $date."</td><td>".$row['price']."</td><td>" .$row['username']
+                                ."</td><td>". $row['name'] . "</td><td>".$row['block']."/".$row['doorno']."</td><td>".
+                                $row['date']."</td></tr>";
+                            }
+                            echo"</table>";
+                        } else {
+                            echo "No record!";
+                        }
+                    }
 
-        echo "<table id='users' class='table table-bordered'>
-                          <tr>
-                          <th>Payment No</th>
-                          <th>Username</th>
-                          <th>Name</th>
-                          <th>Collected</th>
-                          <th>Date</th> 
-                          </tr>";
-
-        while ($row =  $result->fetch_assoc()) {
-            $payno = $row['payno'];
-            $username = $row['username'];
-            $name = $row['name'];
-            $price = $row['price'];
-            $date = $row['date'];
-            $rate = ("/3000");
-            // code to display information
-
-
-            {
-                echo "<tr>
-                        <td>$payno</td>
-                        <td>$username</td>
-                        <td>$name</td>
-                        <td>$price$rate </td>
-                        <td>$date</td>
-                        </tr>";
-            }
-        }
         ?>
             </div>
 
