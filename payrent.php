@@ -93,6 +93,11 @@ if (isset($_GET['logout'])) {
                     Overview </a>
                 </li>
                 <li>
+									<a href="annoshow.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Announcements </a>
+								</li>
+                <li>
                   <a href="paymenthistory.php">
                     <i class="glyphicon glyphicon-user"></i>
                     Payment History </a>
@@ -103,6 +108,12 @@ if (isset($_GET['logout'])) {
                     <i class="glyphicon glyphicon-flag"></i>
                     Monthly Expenses </a>
                 </li>
+
+                <li>
+									<a href="contact.php">
+										<i class="glyphicon glyphicon-flag"></i>
+										Contact Us </a>
+								</li>
               </ul>
             </div>
             <!-- END MENU -->
@@ -122,6 +133,8 @@ if (isset($_GET['logout'])) {
               @$price = mysqli_real_escape_string($conn, $_POST['price']);
               @$date = mysqli_real_escape_string($conn, $_POST['date']);
               @$username = $_SESSION['username'];
+              
+
       
               if (count($errors) == 0) {
 
@@ -153,7 +166,8 @@ if (isset($_GET['logout'])) {
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="small mb-1" for="inputDate"> Date</label>
-                    <input class="form-control py-4" id="inputDate" name="date" type="text" placeholder="Date (YYYY/MM/DD)" />
+                    <input class="form-control py-4" id="inputDate" name="date" type="month" placeholder="" />
+                    
                   </div>
                 </div>
 
