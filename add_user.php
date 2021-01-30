@@ -85,6 +85,16 @@ if (isset($_GET['logout'])) {
 										Payment List </a>
 								</li>
 								<li>
+									<a href="announcement.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Make Announcement</a>
+								</li>
+								<li>
+									<a href="determineincome.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Determine Income</a>
+								</li>
+								<li>
 									<a href="determineexpense.php">
 										<i class="glyphicon glyphicon-user"></i>
 										Determine Rate/Expense </a>
@@ -93,7 +103,13 @@ if (isset($_GET['logout'])) {
 								<li>
 									<a href="userlist.php">
 										<i class="glyphicon glyphicon-flag"></i>
-										Users </a>
+										Residents </a>
+								</li>
+
+								<li>
+									<a href="message.php">
+										<i class="glyphicon glyphicon-flag"></i>
+										Resident Messages </a>
 								</li>
 							</ul>
 						</div>
@@ -119,7 +135,7 @@ if (isset($_GET['logout'])) {
 							} else {
 
 								$sql = "INSERT INTO users (username, name, psw, email, block) VALUES ('$uname', '$name',MD5('$pass'),'$email', '$block')";
-
+								
 
 
 								if ($conn->query($sql) === TRUE) {
@@ -186,7 +202,7 @@ if (isset($_GET['logout'])) {
 								<p style="color:red;">Needs to be filled (*)</p>
 							</h6>
 
-							<input class="btn" type="submit" class="btn btn-primary" name="submit" value="Submit"> <br> <br>
+							<input class="btn btn-success" type="submit" class="btn btn-primary" name="submit" value="Submit"> <br> <br>
 
 
 						</form>
