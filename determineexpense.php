@@ -85,6 +85,11 @@ if (isset($_GET['logout'])) {
 										Payment List </a>
 								</li>
 								<li>
+									<a href="announcement.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Make Announcement</a>
+								</li>
+								<li>
 									<a href="determineincome.php">
 										<i class="glyphicon glyphicon-user"></i>
 										Determine Income</a>
@@ -99,6 +104,12 @@ if (isset($_GET['logout'])) {
 									<a href="userlist.php">
 										<i class="glyphicon glyphicon-flag"></i>
 										Residents </a>
+								</li>
+
+								<li>
+									<a href="message.php">
+										<i class="glyphicon glyphicon-flag"></i>
+										Resident Messages </a>
 								</li>
 							</ul>
 						</div>
@@ -164,7 +175,7 @@ if (isset($_GET['logout'])) {
 									<p class="error"><?php echo $_GET['error']; ?></p>
 								<?php } ?>
 
-								<input class="btn" type="submit" class="btn btn-primary" name="submit" value="Send"> <br> <br>
+								<input class="btn btn-success" type="submit" class="btn btn-primary" name="submit" value="Send"> <br> <br>
 
 
 							</form>
