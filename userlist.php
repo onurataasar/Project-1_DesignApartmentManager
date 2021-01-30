@@ -85,6 +85,11 @@ if (isset($_GET['logout'])) {
                                         Payment List </a>
                                 </li>
                                 <li>
+									<a href="announcement.php">
+										<i class="glyphicon glyphicon-user"></i>
+										Make Announcement</a>
+								</li>
+                                <li>
 									<a href="determineincome.php">
 										<i class="glyphicon glyphicon-user"></i>
 										Determine Income</a>
@@ -100,6 +105,12 @@ if (isset($_GET['logout'])) {
                                         <i class="glyphicon glyphicon-flag"></i>
                                         Residents </a>
                                 </li>
+
+                                <li>
+									<a href="message.php">
+										<i class="glyphicon glyphicon-flag"></i>
+										Resident Messages </a>
+								</li>
                             </ul>
                         </div>
                         <!-- END MENU -->
