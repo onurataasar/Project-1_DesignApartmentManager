@@ -107,6 +107,11 @@ if (isset($_GET['logout'])) {
 										<i class="glyphicon glyphicon-flag"></i>
 										Contact Us </a>
 								</li>
+								<li>
+									<a href="oldmessages.php">
+										<i class="glyphicon glyphicon-flag"></i>
+										Old Messages </a>
+								</li>
 							</ul>
 						</div>
 						<!-- END MENU -->
@@ -127,7 +132,31 @@ if (isset($_GET['logout'])) {
 								}
 								echo $rate;
 								?>.</p>
-							Please pay your rents on time.
+								<br><br>
+							<?php
+								include "check.php";
+								include "logincheck.php";
+								$loginname = $_SESSION['username'];
+								$date = "2021-02";
+								$sql = "SELECT * FROM `payment`WHERE username = '$loginname' AND date = '$date' ";
+								$result = $conn->query($sql) or die("Failed to excecute the query $sql on $conn");
+
+								if($row = mysqli_fetch_array($result)) {
+								$price = $row['price'];
+							//	$date = $row['date'];
+								if( $price == "3000" ) {
+									echo "You have no debts for this month. Thank you.";
+								}
+								elseif($price < "3000" ) {
+									echo "You have paid " . $price . " for this month. Please pay " . (3000 - $price) . " more.";
+								}
+								
+							} else{
+									echo "!!! You have unpaid rent for February. Please pay it on time. !!!";
+								}
+						
+
+							?>
 							</center>
 						</div>
 				</div>
